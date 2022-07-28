@@ -25,7 +25,7 @@ contract NameWrapper is
     mapping(bytes32 => bytes) public override names;
 
     bytes32 private constant ETH_NODE =
-        0x93cdeb708b7545dc668eb9280176169d1c33cfd8ed6f04690a0bcc88a93fc4ae;
+        0x63e502e31ec5d360231175e3d332579960a6f457bfbfe25b7fc8fb6aef8b351b;
     bytes32 private constant ROOT_NODE =
         0x0000000000000000000000000000000000000000000000000000000000000000;
 
@@ -51,7 +51,7 @@ contract NameWrapper is
             uint96(CANNOT_REPLACE_SUBDOMAIN | CANNOT_UNWRAP)
         );
         names[ROOT_NODE] = "\x00";
-        names[ETH_NODE] = "\x03eth\x00";
+        names[ETH_NODE] = "\x03vlx\x00";
     }
 
     function supportsInterface(bytes4 interfaceId)
@@ -610,7 +610,7 @@ contract NameWrapper is
     ) private returns (bytes32 labelhash) {
         labelhash = keccak256(bytes(label));
         bytes32 node = _makeNode(ETH_NODE, labelhash);
-        bytes memory name = _addLabel(label, "\x03eth\x00");
+        bytes memory name = _addLabel(label, "\x03vlx\x00");
 
         if (resolver != address(0)) {
             ens.setResolver(node, resolver);

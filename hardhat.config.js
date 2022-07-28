@@ -57,6 +57,15 @@ module.exports = {
       tags: ["legacy", "use_root"],
       chainId: 1,
       accounts: real_accounts,
+    },
+    velas: {
+      url: `https://evmexplorer.velas.com/rpc`,
+      tags: ["legacy", "use_root"],
+      chainId: 106,
+      accounts: real_accounts,
+      gasMultiplier: 2,
+      gasLimit: 2_000_0000,
+      gasPrice: 20000000000,
     }
   },
   mocha: {
