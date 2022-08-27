@@ -66,6 +66,15 @@ module.exports = {
       gasMultiplier: 2,
       gasLimit: 2_000_0000,
       gasPrice: 20000000000,
+    },
+    velas_mainnet: {
+      url: `https://evmexplorer.velas.com/rpc`,
+      tags: ["use_root"],
+      chainId: 106,
+      accounts: real_accounts,
+      gasMultiplier: 2,
+      gasLimit: 2_000_0000,
+      gasPrice: 20000000000,
     }
   },
   mocha: {
