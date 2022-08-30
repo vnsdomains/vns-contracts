@@ -19,7 +19,7 @@ contract StablePriceOracle is Ownable, PriceOracle {
     uint[] public rentPrices;
 
     // Oracle address
-    AggregatorInterface public immutable usdOracle;
+    AggregatorInterface public usdOracle;
 
     event OracleChanged(address oracle);
 
@@ -29,7 +29,7 @@ contract StablePriceOracle is Ownable, PriceOracle {
     bytes4 constant private ORACLE_ID = bytes4(keccak256("price(string,uint256,uint256)") ^ keccak256("premium(string,uint256,uint256)"));
 
     constructor(AggregatorInterface _usdOracle, uint[] memory _rentPrices) public {
-        usdOracle = _usdOracle;
+        setUsdOracle(_usdOracle);
         setPrices(_rentPrices);
     }
 
@@ -57,6 +57,15 @@ contract StablePriceOracle is Ownable, PriceOracle {
     function setPrices(uint[] memory _rentPrices) public onlyOwner {
         rentPrices = _rentPrices;
         emit RentPriceChanged(_rentPrices);
+    }
+
+    /**
+     * @dev Sets usd oracle.
+     * @param _usdOracle Oracle address.
+     */
+    function setUsdOracle(AggregatorInterface _usdOracle) public onlyOwner {
+        usdOracle = _usdOracle;
+        emit OracleChanged(address(_usdOracle));
     }
 
     /**
