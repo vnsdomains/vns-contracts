@@ -4,9 +4,9 @@ const toBN = require('web3-utils').toBN;
 module.exports = async ({getNamedAccounts, deployments, network}) => {
     const {deploy} = deployments;
     const {deployer, owner} = await getNamedAccounts();
-    const oracle = await deploy('DummyOracle', {
+    const oracle = await deploy('DIAOracleProxy', {
         from: deployer, 
-        args:[1],
+        args:["0x0A7dC648C44e31636252be2267B86e0d9E1F8856"],
         log:true
     })
 
